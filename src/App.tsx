@@ -1,35 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// UI 樹根(設計系統骨架)：負責 Layout, Routing, Page, Component
+
+// 引入元件
+import Header from './components/Header'
+import Home from './pages/home'
+// 引入 CSS
 import './App.css'
 
+// 根元件（Root Component）
 function App() {
-  const [count, setCount] = useState(0)
-
+  // 回傳 JSX 語法，React 會把它轉換成 React 元素
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <Home />
     </>
   )
 }
 
+// 把 App 元件 export (Public)出去，讓其他檔案可以 import 使用
 export default App

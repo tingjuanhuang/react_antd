@@ -4,9 +4,6 @@
 import { StrictMode } from 'react'
 // 建立一個 React Root，負責把 React UI 樹渲染到指定 DOM 上
 import { createRoot } from 'react-dom/client'
-// Ant Design 的 CSS 樣式（v6 使用 reset.css）
-import 'antd/dist/reset.css'
-import './index.css'
 // 整個 React UI 樹的根元件（Root Component）
 import App from './App'
 

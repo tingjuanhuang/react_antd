@@ -1,4 +1,3 @@
-// src/pages/Home/index.tsx
 import Counter from '../../components/Counter'
 
 export default function Home() {

@@ -1,5 +1,5 @@
 import { Layout } from 'antd'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 interface MainLayoutProps {
   children: ReactNode
@@ -7,8 +7,8 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <Layout>
-      <Layout.Content>
+    <Layout className="mainLayout">
+      <Layout.Content className="mainLayoutContent">
         {children}
       </Layout.Content>
     </Layout>

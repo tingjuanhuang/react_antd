@@ -6,6 +6,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // 整個 React UI 樹的根元件（Root Component）
 import App from './App'
+import './styles/index.scss'
 
 // 把 <App /> 這棵 React 樹，插到 HTML 裡的 #root 這個洞裡
 // 驚嘆號是告知 TypeScript 這個元素一定存在，不會是 null

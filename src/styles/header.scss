@@ -1,0 +1,21 @@
+.appHeader {
+  display: flex;
+  align-items: center;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  padding: 0 var(--header-padding-x);
+}
+
+.headerBrand {
+  font-size: var(--brand-font-size);
+  font-weight: var(--brand-font-weight);
+  margin-right: var(--brand-gap);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.headerMenu {
+  flex: 1;
+  min-width: 0;
+  border: none;
+}

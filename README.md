@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# React_Antd
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React_Antd 是基於 React + Ant Design 的學習／筆記型應用，用來紀錄 Ant Design 元件用法與踩坑筆記。
 
-Currently, two official plugins are available:
+## 技術棧
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript** + **Vite**
+- **Ant Design 6**（UI 元件）
+- **React Router 7**（路由）
+- **SCSS**（樣式，集中於 `src/styles/`）
 
-## React Compiler
+## 專案結構
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **頁面**（`src/pages/`）
+  - **Home**（`/`）— 首頁，示範 Counter 元件
+  - **Components**（`/components`）— 紀錄各種元件的頁面
+  - **Gotchas**（`/gotchas`）— 踩坑筆記
+- **共用元件**（`src/components/`）
+  - **Header** — 頂部導覽，使用 Ant Design `Layout`、`Menu`
+  - **Counter** — 計數器示範元件
+- **版面**（`src/layouts/`）
+  - **MainLayout** — 主版面，包住 Routes 內容區，背景與無 padding 由 layout.scss 管理
+- **樣式**（`src/styles/`）
+  - **index.scss** — 入口，依序 @import variables、base、layout、header
+  - **variables.scss** — 顏色與間距變數（--layout-bg、--header-*、--primary 等）
+  - **base.scss** — 全域基礎（:root、body、a、h1、button）
+  - **layout.scss** — #root、.mainLayout、.mainLayoutContent
+  - **header.scss** — .appHeader、.headerBrand、.headerMenu
+- **路由與殼**（`src/App.tsx`）— `BrowserRouter` + `Routes` + 各頁 `Route`
 
-## Expanding the ESLint configuration
+## 本地開發與建置
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# 安裝依賴
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 開發模式
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 建置
+npm run build
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 預覽建置結果
+npm run preview
 ```

@@ -1,3 +1,4 @@
+// App 是整個應用的「殼」
 // UI 樹根(設計系統骨架)：負責 Layout, Routing, Page, Component
 
 // 引入 Router 相關
@@ -7,12 +8,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 // 引入元件
 import Header from './components/Header'
+import MainLayout from './layouts/MainLayout'
 import Home from './pages/home'
-import About from './pages/about'
-import Contact from './pages/contact'
-// 引入 CSS
-import './App.css'
-
+import Components from './pages/components'
+import Gotchas from './pages/gotchas'
 // 根元件（Root Component）
 function App() {
   // 回傳 JSX 語法，React 會把它轉換成 React 元素
@@ -20,12 +19,14 @@ function App() {
     <BrowserRouter>
       {/* 整個 App */}
       <Header />
-      <Routes>
-        {/* path 為網址，畫面顯示 element */}
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <MainLayout>
+        <Routes>
+          {/* path 為網址，畫面顯示 element */}
+          <Route path="/" element={<Home />} />
+          <Route path="/components" element={<Components />} />
+          <Route path="/Gotchas" element={<Gotchas />} />
+        </Routes>
+      </MainLayout>
     </BrowserRouter>
   )
 }

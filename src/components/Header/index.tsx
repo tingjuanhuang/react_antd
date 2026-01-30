@@ -1,58 +1,39 @@
 import { Layout, Menu } from 'antd'
-import { useNavigate, useLocation } from 'react-router-dom'
+// Hook 是幫 React 元件加能力的小工具，通常以 use 開頭
+// useNavigate 負責「去哪里」
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+// AntD Menu 的規格書，用來提醒是否有錯誤
 import type { MenuProps } from 'antd'
 
 export default function Header() {
     const navigate = useNavigate()
     const location = useLocation()
 
-    // 根據當前路徑設定選中的選單項目
-    const getSelectedKey = () => {
-        if (location.pathname === '/about') return 'about'
-        return 'home'
-    }
-
-    // 選單項目配置
+    // 照著規格書的格式配置選單項目
     const menuItems: MenuProps['items'] = [
         {
-            key: 'home',
-            label: 'Home',
-            onClick: () => navigate('/'),
+            key: '/components',
+            label: 'Components',
+            onClick: () => navigate('/components'),
         },
         {
-            key: 'about',
-            label: 'About',
-            onClick: () => navigate('/about'),
-        },
-        {
-            key: 'contact',
-            label: 'Contact',
-            onClick: () => navigate('/contact'),
+            key: '/gotchas',
+            label: 'Gotchas',
+            onClick: () => navigate('/gotchas'),
         },
     ]
 
     return (
         <Layout>
-            <Layout.Header style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                background: '#fff',
-                borderBottom: '1px solid #f0f0f0',
-                padding: '0 24px'
-            }}>
-                <div style={{ 
-                    fontSize: '20px', 
-                    fontWeight: 'bold', 
-                    marginRight: '40px',
-                    color: '#1890ff'
-                }}>
-                    Stella
-                </div>
+            <Layout.Header className="appHeader">
+                <Link to="/" className="headerBrand">
+                    React_Antd
+                </Link>
                 <Menu
                     mode="horizontal"
-                    selectedKeys={[getSelectedKey()]}
+                    selectedKeys={[location.pathname]}
                     items={menuItems}
-                    style={{ flex: 1, minWidth: 0, border: 'none' }}
+                    classNames={{ root: 'headerMenu' }}
                 />
             </Layout.Header>
         </Layout>
